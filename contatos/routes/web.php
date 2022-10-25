@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContatosControler;
+use App\Http\Controllers\ContatosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,11 @@ use App\Http\Controllers\ContatosControler;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('contatos/');
 });
 
-Route::resource('contatos',ContatosControler::class);
+Route::resource('contatos',ContatosController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
